@@ -29,6 +29,21 @@
         pair[41] = "flame"; pair[42] = "pill"; pair[43] = "apple"; pair[44] = "dash"; pair[45] = "celtic";
         pair[46] = "1UP"; pair[47] = "lazuli"; pair[48] = "coffee"; pair[1001] = "cube";
     
+
+    let isShiftPressed = false;
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Shift') {
+            isShiftPressed = true;
+        }
+    });
+
+    document.addEventListener('keyup', (event) => {
+        if (event.key === 'Shift') {
+            isShiftPressed = false;
+        }
+    });
+    
     function cardToID(card) {
         card = card.toLowerCase()
         for (let i = 1; i < pair.length; i++) {
