@@ -28,7 +28,7 @@
         pair[36] = "medal"; pair[37] = "drop"; pair[38] = "cherry"; pair[39] = "lotus"; pair[40] = "wafer";
         pair[41] = "flame"; pair[42] = "pill"; pair[43] = "apple"; pair[44] = "dash"; pair[45] = "celtic";
         pair[46] = "1UP"; pair[47] = "lazuli"; pair[48] = "coffee"; pair[1001] = "cube";
-    
+
 
     let isShiftPressed = false;
 
@@ -43,7 +43,7 @@
             isShiftPressed = false;
         }
     });
-    
+
     function cardToID(card) {
         card = card.toLowerCase()
         for (let i = 1; i < pair.length; i++) {
@@ -78,10 +78,10 @@
             warning: '#ffff00',
             debug: '#80c0ff'
         }
-        
+
         const color = colors[type] || colors.info
         const board = document.getElementById("board")
-        
+
         if (board) {
             board.innerHTML += `<div><span style="color: #7eef6d">[SCRIPT] </span><span style="color: ${color}">${message}</span></div>`
             chatScroll()
@@ -101,7 +101,7 @@
     const oldFrag = unsafeWindow.craftfrag
     let prevCraftState = false, curCraftState = false
     let prevFragState = false, curFragState = false
-    
+
     async function injectCraft() {
         unsafeWindow.craftcard = function () {
             if (isShiftPressed) unsafeWindow.singleall()
@@ -135,7 +135,7 @@
         curFragState = unsafeWindow.location.pathname.startsWith("/e/frag")
         if (curFragState && !prevFragState) injectFrag()
     }, 1400)
-    
+
     let goCraft = false
     function craftRule(value) {
         if (/^\d+\.\d+\b/.test(value) === false) {
@@ -227,12 +227,16 @@
     unsafeWindow.send = function () {
         const messageValue = document.getElementById("message").value
         let newMessageValue = messageValue
-        
+
         if (newMessageValue === ".craft") {
             allCraft()
             newMessageValue = ""
             document.getElementById("message").value = newMessageValue
         }
+        else {
+            document.getElementById("message").value = newMessageValue
+        }
+        oldSend()
     }
 
 })();
